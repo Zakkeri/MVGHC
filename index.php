@@ -145,12 +145,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 $servername = "ec2-204-236-228-77.compute-1.amazonaws.com";
 $username = "zmaujhmhetyghl";
 $password = " c7fvHNkE1oiLl0IltBb12JPYEe";
-
+$dbname = "d1me9dg3mha15";
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = pg_connect("host=" + $servername + "port=5432 dbname=" + $dbname + "user=" + $username + " password=" + $password);
 
 // Check connection
-if ($conn->connect_error) {
+if (!$conn->connect) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
@@ -158,10 +158,6 @@ echo "Connected successfully";
 </div>
     <div id="map-canvas"></div>
 	
-<?php
-$conn->close()
-
-?>
   </body>
 </html>
 
