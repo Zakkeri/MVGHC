@@ -19,7 +19,7 @@ $app->get('/', function() use($app) {
 
 $app->run();
 
-echo(<!DOCTYPE html><html>
+echo("<!DOCTYPE html><html>
 <head>
 <title>Page Title</title>
 </head>
@@ -29,6 +29,6 @@ echo(<!DOCTYPE html><html>
 <p>This is a paragraph.</p>
 
 </body>
-</html>);
+</html>");
 ?>
 
