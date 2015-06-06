@@ -9,5 +9,9 @@
 <?php
 echo "<p>This is a paragraph generated with php</p>";
 ?>
+
+<script>
+window.alert(5 + 6);
+</script>
 </body>
 </html>
