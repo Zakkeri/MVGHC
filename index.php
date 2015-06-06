@@ -139,7 +139,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </style>
   </head>
   <body>
-  <?php
+
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+	<div>  <?php
 $servername = "ec2-204-236-228-77.compute-1.amazonaws.com";
 $username = "zmaujhmhetyghl";
 $password = " c7fvHNkE1oiLl0IltBb12JPYEe";
@@ -153,8 +155,7 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 ?> 
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-	<div>Some text here</div>
+</div>
     <div id="map-canvas"></div>
 	
 <?php
