@@ -140,6 +140,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </head>
   <body>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+	<div>Some text here</div>
     <div id="map-canvas"></div>
   </body>
 </html>
