@@ -170,7 +170,7 @@ sites = [
    "lng": -82.7985454,
    "img": "",
    "description": "Built in 1913 in the Gothic Revival style, the church is on the site of the original Mt. Olive AME, built in 1896.",
-   "url": "mtolivechurch1.org/"
+   "url": "http://www.mtolivechurch1.org/"
   },
   {"id": 12,
    "name": "Tampa Bay History Center and Museum Store", 
@@ -178,7 +178,7 @@ sites = [
    "lng": -82.4499111,
    "img": "http://thingstodo.s3.amazonaws.com/resources/photos/TampaBayHistory1.jpg",
    "description": "The new 60,000-square-foot Center features the first native inhabitants, Spanish conquistadors, pioneers, sports legends, a 1920s-era cigar store, interactive maps, and exhibits that feature a rich ethnic heritage and adventurous spirit that hasinspired generations.",
-   "url": "www.tampabayhistorycenter.org/"
+   "url": "http://www.tampabayhistorycenter.org/"
   },
   {"id": 13,
    "name": "Safety Harbor Temple Mound", 
@@ -186,7 +186,7 @@ sites = [
    "lng": -82.6828505,
    "img": "",
    "description": "This National Historic Landmark site, with a large temple mound, was a ceremonial center of the Tocobaga Indians for nearly 500 years, beginning about 1,000 years ago.",
-   "url": "www.pinellascounty.org/park/11_Philippe.htm"
+   "url": "http://www.pinellascounty.org/park/11_Philippe.htm"
   }
 ];
 
