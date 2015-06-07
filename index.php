@@ -150,10 +150,8 @@ $dbname = "d1me9dg3mha15";
 $conn = pg_connect("host=" + $servername + "port=5432 dbname=" + $dbname + "user=" + $username + " password=" + $password);
 
 // Check connection
-if (!$conn->connect) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
+
+echo "Connection result: " + $conn;
 ?> 
 </div>
     <div id="map-canvas"></div>
