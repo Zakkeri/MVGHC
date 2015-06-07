@@ -50,112 +50,224 @@
         font-size: 13px;
         font-weight: 300;
       }
-
+      #target {
+        width: 345px;
+      }
     </style>
-    <title>Places search box</title>
+    <title>Visitors Guide</title>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script>
-// This example adds a search box to a map, using the Google Place Autocomplete
-// feature. People can enter geographical searches. The search box will return a
-// pick list containing a mix of places and predicted search terms.
-
+var infowindow = null;
+	
 function initialize() {
+  var mapOptions = {
+    zoom: 11,
+    center: new google.maps.LatLng(27.9962691, -82.4541977)
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+                                mapOptions);
 
-  var markers = [];
-  var map = new google.maps.Map(document.getElementById('map-canvas'), {
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
+  setMarkers(map, sites);
+  
+  infowindow = new google.maps.InfoWindow({
+                content: "loading..."
+               });
+}
 
-  var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-33.8902, 151.1759),
-      new google.maps.LatLng(-33.8474, 151.2631));
-  map.fitBounds(defaultBounds);
+//JSON data
+var sites = [
+  {"id": 0,
+   "name": "Belmont Heights Little League", 
+   "lat": 27.9813723, 
+   "lng": -82.4360732,
+   "img": "",
+   "description": "Where Dwight Gooden, Floyd Youmans, Vance Lovelace, Gary Sheffield and Derek Bell learned to play the game.",
+   "url": ""
+   },
+  {"id": 1, 
+   "name": "Fort Foster Historic Site at Hillsborough River State Park", 
+   "lat": 28.1479166, 
+   "lng": -82.2348914,
+   "img": "https://www.floridastateparks.org/sites/default/files/styles/slider_large/public/Division%20of%20Recreation%20and%20Parks/gallery/Hillsborough-River/DSC_0032.JPG?itok=HGneX-dQ",
+   "description": "Within Hillsborough River State Park is a replica of Fort Foster, a Second Seminole War military fort built in 1836 and occupied until 1838. The fort guarded a military bridge over the Hillsborough River. An interpretive center contains exhibits on the fort, Seminoles, and Second Seminole War.",
+   "url": "https://www.floridastateparks.org/park/Hillsborough-River"
+   },
+   {"id": 2, 
+    "name": "Helping Hand Day Nursery", 
+    "lat": 28.0060047, 
+    "lng": -82.4100972,
+    "img": "http://helpinghanddaycare.org/img/header.gif",
+    "description": "Some of Tampa’s best known political figures were students here. The nursery began in 1924 and thrived in the city’s historically black business district, along Central Avenue.",
+    "url": "http://helpinghanddaycare.org/"
+  },
+  {"id": 3, 
+   "name": "The Jackson House", 
+   "lat": 27.952036, 
+   "lng": -82.452004,
+   "img": "",
+   "description": "The house was built around 1900 as a family’s home, but it was eventually transformed into a 24 room hotel for black visitors who, no matter how celebrated there were, could not get a room elsewhere in town.",
+   "url": ""
+  },
+  {"id": 4, 
+   "name": "La Union Martí-Maceo", 
+   "lat": 27.960472, 
+   "lng": -82.44588,
+   "img": "",
+   "description": "The club, which was founded in 1900, provided medical and other support services to the Afro-Cuban cigar workers who were barred by the practice of segregation of participating in the other Spanish and Italian clubs that cared for Ybor City’s cigar workers. The club was named for Cuban patriot Jose Martí, who was white, and General Antonio Maceo, who was black. Both were killed in the mid-1890s.",
+   "url": ""
+  },
+  {"id": 5, 
+   "name": "North Franklin Street Historic District", 
+   "lat": 27.960472, 
+   "lng": -82.44588,
+   "img": "",
+   "description": "A sparsely settled area of private wood frame dwellings and businesses, this neighborhood formed around 1900 and reached its peak during the 1930s. A segregated area until the 1960s, the F.W. Woolworth Department store was located at the corner of Franklin and Polk Streets and was the site of sit-ins in late February 1960 by the NAACP and students from Tampa’s Middleton and Blake High Schools and from Booker T. Washington Junior High School. Today the building is vacant but has been designated a local historic structure and is scheduled for redevelopment.",
+   "url": ""
+  },
+  {"id": 6, 
+   "name": "Oaklawn Cemetery", 
+   "lat": 27.9545892, 
+   "lng": -82.4572721,
+   "img": "",
+   "description": "Opened in 1859, this was Tampa’s first public cemetery. Perhaps its most remarkable grave is that of the white man, John Ashley, the city’s first clerk, and his black slave Nancy, who lived as common-law husband and wife, and are buried together here.",
+   "url": ""
+  },
+  {"id": 7, 
+   "name": "St. Paul AME Church", 
+   "lat": 27.954068, 
+   "lng": -82.458117,
+   "img": "",
+   "description": "The church dates back to 1870. It was the setting for many gatherings of civil rights campaigners, and the church has preserved its rich history with photographs of many people who visited and served there.",
+   "url": ""
+  },
+  {"id": 8, 
+   "name": "St. Peter Claver School", 
+   "lat": 27.9568101, 
+   "lng": -82.4533148,
+   "img": "",
+   "description": "The school, opened in 1894 in downtown, was burned down by white supremacists a year after it opened. It was rebuilt in its present location and remains the oldest black school in the county.",
+   "url": ""
+  },
+  {"id": 9, 
+   "name": "Upper Tampa Bay Park Archaeological District", 
+   "lat": 28.0147713, 
+   "lng": -82.633423,
+   "img": "http://vivaflorida.org/var/site/storage/images/explore/gardens-and-parks/upper-tampa-bay-park-archaeological-district/11088-2-eng-US/Upper-Tampa-Bay-Park-Archaeological-District_poi.jpg",
+   "description": "This 2,144-acre park and preserve features an archaeological district within the park, with 18 sites that date from 500 to 4,000 years ago and are associated with the Manasota Culture. The interpretive building houses exhibits on the archaeological district.",
+   "url": "http://www.hillsboroughcounty.org/Facilities/Facility/Details/7945"
+  },
+  {"id": 10,
+   "name": "Bealsville Glover School", 
+   "lat": 28.0186323, 
+   "lng": -82.1128641,
+   "img": "http://www.bealsville.com/WebpagestyleC/Publish/images/GloverSchool3.jpg",
+   "description": "This part of Hillsborough County, seven miles south of Plant City, was settled in 1865 by freed slaves. The first of five churches, Antioch Baptist, was opened in 1868. A wooden one-room school house was built in 1933. Two other buildings were added in the 1940s, but the school was eventually closed. It operates today as a community center.",
+   "url": "http://www.bealsville.com/"
+  }
+];
 
-  // Create the search box and link it to the UI element.
-  var input = /** @type {HTMLInputElement} */(
-      document.getElementById('pac-input'));
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+function buildInfoWindow(image, name, description, url) {
+  var pic = ( image == "" ) ? '' : 
+    '<div style="float: left;"><img src="' + image + '" style="max-width: 100px; max-height: 100px; padding-right: 10px;" /></div>';
 
-  var searchBox = new google.maps.places.SearchBox(
-    /** @type {HTMLInputElement} */(input));
+  var website = ( url == "" ) ? "" : "<br /> <br /> <a href='" + url + "' target='_blank'>Website</a>";
+	
+  return pic + '<div><h4>' + name + "</h4>" + description + website + "</div>";
+}
 
-  // [START region_getplaces]
-  // Listen for the event fired when the user selects an item from the
-  // pick list. Retrieve the matching places for that item.
-  google.maps.event.addListener(searchBox, 'places_changed', function() {
-    var places = searchBox.getPlaces();
+function setMarkers(map, locations) {
 
-    if (places.length == 0) {
-      return;
-    }
-    for (var i = 0, marker; marker = markers[i]; i++) {
-      marker.setMap(null);
-    }
-
-    // For each place, get the icon, place name, and location.
-    markers = [];
-    var bounds = new google.maps.LatLngBounds();
-    for (var i = 0, place; place = places[i]; i++) {
-      var image = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
-
-      // Create a marker for each place.
-      var marker = new google.maps.Marker({
+  for (var i = 0; i < locations.length; i++) {
+    var location = locations[i];
+    var myLatLng = new google.maps.LatLng( location["lat"], location["lng"] );
+    var marker = new google.maps.Marker({
+        position: myLatLng,
         map: map,
-        icon: image,
-        title: place.name,
-        position: place.geometry.location
-      });
+        title: location["name"],
+		html: buildInfoWindow( location["img"], location["name"], location["description"], location["url"] )
+    });
 
-      markers.push(marker);
+    var contentString = "Some content";
 
-      bounds.extend(place.geometry.location);
-    }
-
-    map.fitBounds(bounds);
-  });
-  // [END region_getplaces]
-
-  // Bias the SearchBox results towards places that are within the bounds of the
-  // current map's viewport.
-  google.maps.event.addListener(map, 'bounds_changed', function() {
-    var bounds = map.getBounds();
-    searchBox.setBounds(bounds);
+    google.maps.event.addListener(marker, "click", function () {
+      infowindow.setContent(this.html);
+      infowindow.open(map, this);
+    });
+	
+}
+  
+  google.maps.event.addListener(marker, 'click', function() {
+    this.infowindow.open(map, this);
   });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+function listClick() {
+	console.log("Clicked!");
+}
     </script>
-    <style>
+	<style>
       #target {
         width: 345px;
       }
+	  #tours {
+		  position: fixed;
+		  top: 20px;
+		  left:30px;
+		  border: 1px solid #999;
+        background: #fff;
+	  }
+	  ul {
+		  
+		  list-style-type: none;
+        padding: 0;
+        margin: 0;
+		height: 90px;
+
+	  }
+	  li {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+		cursor: pointer;
+	}
+	  li:nth-child(odd) {
+        background-color: #fcfcfc;
+		cursor: pointer;
+	  }
+	h2 {
+        font-size: 22px;
+        margin: 0 0 5px 0;
+      }
+
     </style>
-  </head>
+ </head>
   <body>
-
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-	<div>  <?php
-$servername = "ec2-204-236-228-77.compute-1.amazonaws.com";
-$username = "zmaujhmhetyghl";
-$password = " c7fvHNkE1oiLl0IltBb12JPYEe";
-$dbname = "d1me9dg3mha15";
-// Create connection
-$conn = pg_connect("host=" + $servername + "port=5432 dbname=" + $dbname + "user=" + $username + " password=" + $password);
-
-// Check connection
-
-echo "Connection result: " + $conn;
-?> 
-</div>
-    <div id="map-canvas"></div>
+    
+	<div id="map-canvas"></div>
+	<div id="tours">
+	<center><h2>Tours</h2></center>
+	<ul id="places"></ul>
+	</div>
+	<script>
+var placesList = document.getElementById('places');
+var li = document.createElement("li");
+	li.appendChild(document.createTextNode("Tampa round tour"));
+	li.addEventListener('click', function(){
+		listClick();
+		});
+	placesList.appendChild(li);
 	
+var li1 = document.createElement("li");
+	li1.appendChild(document.createTextNode("Towards Tampa Bay!"));
+	li1.addEventListener('click', function(){
+		listClick();
+		});
+	placesList.appendChild(li1);	
+</script>
   </body>
 </html>
 
