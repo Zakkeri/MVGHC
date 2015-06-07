@@ -58,13 +58,13 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script>
 var infowindow = null;
-	
+var directionsDisplay = null;	
 function initialize() {
   var mapOptions = {
     zoom: 11,
     center: new google.maps.LatLng(27.9962691, -82.4541977)
   }
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
+  map = new google.maps.Map(document.getElementById('map-canvas'),
                                 mapOptions);
 
   setMarkers(map, sites);
@@ -75,7 +75,7 @@ function initialize() {
 }
 
 //JSON data
-var sites = [
+sites = [
   {"id": 0,
    "name": "Belmont Heights Little League", 
    "lat": 27.9813723, 
@@ -282,14 +282,86 @@ var placesList = document.getElementById('places');
 var li = document.createElement("li");
 	li.appendChild(document.createTextNode("Tampa round tour"));
 	li.addEventListener('click', function(){
-		listClick();
+	var latlng = new google.maps.LatLng(sites[0]["lat"], sites[0]["lng"]);
+    var myOptions = {
+      zoom: 9,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+   	var rendererOptions = { map: map };
+	if(directionsDisplay  != null){
+		directionsDisplay.setMap(null);
+		directionsDisplay = null;
+	}
+	directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+		var point1 = new google.maps.LatLng(sites[1]["lat"], sites[1]["lng"]);
+var point2 = new google.maps.LatLng(sites[2]["lat"], sites[2]["lng"]);
+var point3 = new google.maps.LatLng(sites[3]["lat"], sites[3]["lng"]);
+
+// build an array of the points
+var wps = [{ location: point1 }, { location: point2 }, {location: point3}];
+
+// set the origin and destination
+var org = new google.maps.LatLng ( sites[0]["lat"], sites[0]["lng"]);
+var dest = new google.maps.LatLng ( sites[4]["lat"], sites[4]["lng"]);
+
+var request = {
+        origin: org,
+        destination: dest,
+        waypoints: wps,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+directionsService = new google.maps.DirectionsService();
+	directionsService.route(request, function(response, status) {
+				if (status == google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(response);
+				}
+				else
+					alert ('failed to get directions');
+			});
 		});
 	placesList.appendChild(li);
 	
 var li1 = document.createElement("li");
 	li1.appendChild(document.createTextNode("Towards Tampa Bay!"));
 	li1.addEventListener('click', function(){
-		listClick();
+		var latlng = new google.maps.LatLng(sites[6]["lat"], sites[6]["lng"]);
+    var myOptions = {
+      zoom: 9,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+   	var rendererOptions = { map: map };
+	if(directionsDisplay  != null){
+		directionsDisplay.setMap(null);
+		directionsDisplay = null;
+	}
+	directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+		var point1 = new google.maps.LatLng(sites[7]["lat"], sites[7]["lng"]);
+var point2 = new google.maps.LatLng(sites[8]["lat"], sites[8]["lng"]);
+var point3 = new google.maps.LatLng(sites[9]["lat"], sites[9]["lng"]);
+
+// build an array of the points
+var wps = [{ location: point1 }, { location: point2 }, {location: point3}];
+
+// set the origin and destination
+var org = new google.maps.LatLng ( sites[6]["lat"], sites[6]["lng"]);
+var dest = new google.maps.LatLng ( sites[6]["lat"], sites[6]["lng"]);
+
+var request = {
+        origin: org,
+        destination: dest,
+        waypoints: wps,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+directionsService = new google.maps.DirectionsService();
+	directionsService.route(request, function(response, status) {
+				if (status == google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(response);
+				}
+				else
+					alert ('failed to get directions');
+			});
 		});
 	placesList.appendChild(li1);	
 </script>
