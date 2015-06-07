@@ -279,9 +279,9 @@ function listClick() {
 	<script>
 var placesList = document.getElementById('places');
 var li = document.createElement("li");
-	li.appendChild(document.createTextNode("Tampa round tour"));
+	li.appendChild(document.createTextNode("Tampa Round Tour"));
 	li.addEventListener('click', function(){
-	var latlng = new google.maps.LatLng(sites[0]["lat"], sites[0]["lng"]);
+	var latlng = new google.maps.LatLng(sites[5]["lat"], sites[5]["lng"]);
     var myOptions = {
       zoom: 9,
       center: latlng,
@@ -293,16 +293,17 @@ var li = document.createElement("li");
 		directionsDisplay = null;
 	}
 	directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-		var point1 = new google.maps.LatLng(sites[1]["lat"], sites[1]["lng"]);
-var point2 = new google.maps.LatLng(sites[2]["lat"], sites[2]["lng"]);
-var point3 = new google.maps.LatLng(sites[3]["lat"], sites[3]["lng"]);
+		var point1 = new google.maps.LatLng(sites[3]["lat"], sites[3]["lng"]);
+var point2 = new google.maps.LatLng(sites[7]["lat"], sites[7]["lng"]);
+var point3 = new google.maps.LatLng(sites[6]["lat"], sites[6]["lng"]);
+var point4 = new google.maps.LatLng(sites[8]["lat"], sites[8]["lng"]);
 
 // build an array of the points
-var wps = [{ location: point1 }, { location: point2 }, {location: point3}];
+var wps = [{ location: point1 }, { location: point2 }, {location: point3}, {location: point4}];
 
 // set the origin and destination
-var org = new google.maps.LatLng ( sites[0]["lat"], sites[0]["lng"]);
-var dest = new google.maps.LatLng ( sites[4]["lat"], sites[4]["lng"]);
+var org = new google.maps.LatLng ( sites[5]["lat"], sites[5]["lng"]);
+var dest = new google.maps.LatLng ( sites[5]["lat"], sites[5]["lng"]);
 
 var request = {
         origin: org,
@@ -322,9 +323,9 @@ directionsService = new google.maps.DirectionsService();
 	placesList.appendChild(li);
 	
 var li1 = document.createElement("li");
-	li1.appendChild(document.createTextNode("Towards Tampa Bay!"));
+	li1.appendChild(document.createTextNode("Around The Bay!"));
 	li1.addEventListener('click', function(){
-		var latlng = new google.maps.LatLng(sites[6]["lat"], sites[6]["lng"]);
+		var latlng = new google.maps.LatLng(sites[12]["lat"], sites[12]["lng"]);
     var myOptions = {
       zoom: 9,
       center: latlng,
@@ -336,16 +337,17 @@ var li1 = document.createElement("li");
 		directionsDisplay = null;
 	}
 	directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-		var point1 = new google.maps.LatLng(sites[7]["lat"], sites[7]["lng"]);
-var point2 = new google.maps.LatLng(sites[8]["lat"], sites[8]["lng"]);
+		var point1 = new google.maps.LatLng(sites[3]["lat"], sites[3]["lng"]);
+var point2 = new google.maps.LatLng(sites[7]["lat"], sites[7]["lng"]);
 var point3 = new google.maps.LatLng(sites[9]["lat"], sites[9]["lng"]);
+
 
 // build an array of the points
 var wps = [{ location: point1 }, { location: point2 }, {location: point3}];
 
 // set the origin and destination
-var org = new google.maps.LatLng ( sites[6]["lat"], sites[6]["lng"]);
-var dest = new google.maps.LatLng ( sites[6]["lat"], sites[6]["lng"]);
+var org = new google.maps.LatLng ( sites[12]["lat"], sites[12]["lng"]);
+var dest = new google.maps.LatLng ( sites[13]["lat"], sites[13]["lng"]);
 
 var request = {
         origin: org,
