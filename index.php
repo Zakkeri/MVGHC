@@ -164,6 +164,14 @@ var sites = [
    "description": "This part of Hillsborough County, seven miles south of Plant City, was settled in 1865 by freed slaves. The first of five churches, Antioch Baptist, was opened in 1868. A wooden one-room school house was built in 1933. Two other buildings were added in the 1940s, but the school was eventually closed. It operates today as a community center.",
    "url": "http://www.bealsville.com/"
   }
+  {"id": 11,
+   "name": "Mt. Olive African Methodist Episcopal Church", 
+   "lat": 27.96934, 
+   "lng": -82.7985454,
+   "img": "",
+   "description": "Built in 1913 in the Gothic Revival style, the church is on the site of the original Mt. Olive AME, built in 1896.",
+   "url": "mtolivechurch1.org/"
+  }
 ];
 
 function buildInfoWindow(image, name, description, url) {
