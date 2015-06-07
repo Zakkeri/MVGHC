@@ -195,8 +195,10 @@ function buildInfoWindow(image, name, description, url) {
     '<div style="float: left;"><img src="' + image + '" style="max-width: 100px; max-height: 100px; padding-right: 10px;" /></div>';
 
   var website = ( url == "" ) ? "" : "<br /> <br /> <a href='" + url + "' target='_blank'>Website</a>";
+  
+  var audioTour = '&nbsp; &nbsp; &nbsp; <a href="#">Audio Tour <img src="http://lastpickproductions.com/wp-content/uploads/2013/05/speaker-icon.png" style="height: 15px; width: 15px;" /></a>';
 	
-  return pic + '<div><h4>' + name + "</h4>" + description + website + "</div>";
+  return pic + '<div><h4>' + name + "</h4>" + description + website + audioTour + "</div>";
 }
 
 function setMarkers(map, locations) {
