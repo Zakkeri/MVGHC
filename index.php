@@ -163,7 +163,7 @@ sites = [
    "img": "http://www.bealsville.com/WebpagestyleC/Publish/images/GloverSchool3.jpg",
    "description": "This part of Hillsborough County, seven miles south of Plant City, was settled in 1865 by freed slaves. The first of five churches, Antioch Baptist, was opened in 1868. A wooden one-room school house was built in 1933. Two other buildings were added in the 1940s, but the school was eventually closed. It operates today as a community center.",
    "url": "http://www.bealsville.com/"
-  }
+  },
   {"id": 11,
    "name": "Mt. Olive African Methodist Episcopal Church", 
    "lat": 27.96934, 
@@ -171,16 +171,15 @@ sites = [
    "img": "",
    "description": "Built in 1913 in the Gothic Revival style, the church is on the site of the original Mt. Olive AME, built in 1896.",
    "url": "mtolivechurch1.org/"
-  }
+  },
   {"id": 12,
    "name": "Tampa Bay History Center and Museum Store", 
    "lat": 27.9422224, 
    "lng": -82.4499111,
    "img": "http://thingstodo.s3.amazonaws.com/resources/photos/TampaBayHistory1.jpg",
-   "description": "The new 60,000-square-foot Center features the first native inhabitants, Spanish conquistadors, pioneers, sports legends, a 1920s-era cigar store, interactive maps, and exhibits that feature a rich ethnic heritage and adventurous spirit that has
-inspired generations.",
+   "description": "The new 60,000-square-foot Center features the first native inhabitants, Spanish conquistadors, pioneers, sports legends, a 1920s-era cigar store, interactive maps, and exhibits that feature a rich ethnic heritage and adventurous spirit that hasinspired generations.",
    "url": "www.tampabayhistorycenter.org/"
-  }
+  },
   {"id": 13,
    "name": "Safety Harbor Temple Mound", 
    "lat": 28.0124434, 
