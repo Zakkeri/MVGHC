@@ -181,6 +181,14 @@ var sites = [
 inspired generations.",
    "url": "www.tampabayhistorycenter.org/"
   }
+  {"id": 13,
+   "name": "Safety Harbor Temple Mound", 
+   "lat": 28.0124434, 
+   "lng": -82.6828505,
+   "img": "",
+   "description": "This National Historic Landmark site, with a large temple mound, was a ceremonial center of the Tocobaga Indians for nearly 500 years, beginning about 1,000 years ago.",
+   "url": "www.pinellascounty.org/park/11_Philippe.htm"
+  }
 ];
 
 function buildInfoWindow(image, name, description, url) {
