@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" type="css/text" href="css/tour_map.css" />
+
+  <title>Visitors Guide</title>
+
+  <script src="js/tour_data.js"></script>    <!-- Hillsborough Sites and Tours -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+</head>
+
+ <body>
+ 
+<div id="map-canvas"></div>
+  <div id="tours-div">
+    <select id="tours-select" onchange="getTour(this.value);">
+	  <option value="" disabled selected>Select a tour</option>
+	  <option value="">All Sites</option>
+	</select>
+  </div>
+
+  <script src="js/build_tours.js"></script>
+
+</body>
+</html>
+
