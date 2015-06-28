@@ -1,12 +1,12 @@
-//Hillsborough tours - JSON data
+﻿//Hillsborough tours - JSON data
 tours = {
+  "african" : 
+  { "name" : "Black Heritage Tour",
+    "sites" : [3, 9, 5]
+  },
   "latin" : 
   { "name" : "Latin Heritage Tour",
     "sites" : [3, 7, 6, 8]
-  },
-  "african" : 
-  { "name" : "African Heritage Tour",
-    "sites" : [3, 9, 5]
   },
   "seminole" : 
   { "name" : "Seminole Heritage Tour",
